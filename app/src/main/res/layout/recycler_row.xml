@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:layout_margin="6dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,35 +14,34 @@
             android:id="@+id/imageView"
             android:layout_width="70dp"
             android:layout_height="70dp" />
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+
         <TextView
-            android:layout_marginTop="6dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/imageView"
             android:id="@+id/restaurantName"
-            android:layout_gravity="top"
+
             android:text="restaurantName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:layout_marginStart="40dp"
             android:layout_marginTop="30dp"
-            android:layout_marginStart="50dp"
+            android:layout_below="@id/restaurantName"
+            android:layout_toEndOf="@id/imageView"
             android:id="@+id/restaurantRating"
-            android:layout_gravity="bottom"
+
             android:text="restaurantRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-</LinearLayout>
+    </RelativeLayout>
 
 
     <View
-        android:layout_marginBottom="1dp"
+
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="2dp"/>
-    </LinearLayout>
+
 </LinearLayout>
 
 
