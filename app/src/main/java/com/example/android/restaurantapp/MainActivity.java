@@ -1,5 +1,6 @@
 package com.example.android.restaurantapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.restaurantapp.Adapter.CustomAdapter;
+import com.example.android.restaurantapp.Model.OnRestaurantRowClickListener;
+import com.example.android.restaurantapp.Model.RestaurantModel;
+import com.example.android.restaurantapp.Model.Restaurants;
 import com.example.android.restaurantapp.PreferencesManager.Preferences;
 
 import butterknife.BindView;
@@ -21,21 +25,44 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn)
     Button btn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        adapter = new CustomAdapter();
-        adapter.setRestaurantModels(Preferences.getRestaurants(this).getRestaurantModelArrayList());
+        adapter = new CustomAdapter(this, new OnRestaurantRowClickListener() {
+            @Override
+            public void onRestaurantRowClickListener(RestaurantModel model) {
+                Intent intent = new Intent(MainActivity.this, RestaurntMenuActivity.class);
+                intent.putExtra("RESTAURANT_EXTRA", model);
+                startActivity(intent);
+            }
+        });
+
+        Restaurants restaurants = Preferences.getRestaurants(this);
+        adapter.setRestaurantModels(restaurants.getRestaurantModelArrayList());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
+
+
+
     }@OnClick(R.id.btn)
     public void onBtnClick (View view){
-
+        Intent intent = new Intent(this, Main2Activity.class);
+        startActivityForResult(intent, 1000);
 
     }
 
-}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1000 & resultCode==RESULT_OK)
+            adapter.setRestaurantModels(Preferences.getRestaurants(this).getRestaurantModelArrayList());
+
+        adapter.notifyDataSetChanged();
+        }
+    }
+

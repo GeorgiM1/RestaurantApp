@@ -12,26 +12,34 @@
         android:layout_height="wrap_content">
         <ImageView
             android:layout_margin="4dp"
-            android:id="@+id/imageView"
+            android:id="@+id/foodImage"
             android:layout_width="70dp"
             android:layout_height="70dp" />
 
         <TextView
+            android:gravity="center"
             android:layout_marginStart="40dp"
-            android:layout_toEndOf="@id/imageView"
-            android:id="@+id/restaurantName"
+            android:layout_toEndOf="@id/foodImage"
+            android:id="@+id/food_name"
 
-            android:text="restaurantName"
+            android:text="food name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:gravity="center"
             android:layout_marginStart="40dp"
             android:layout_marginTop="30dp"
-            android:layout_below="@id/restaurantName"
-            android:layout_toEndOf="@id/imageView"
-            android:id="@+id/restaurantRating"
+            android:layout_below="@id/food_name"
+            android:layout_toEndOf="@id/foodImage"
+            android:id="@+id/price"
 
-            android:text="restaurantRating"
+            android:text="price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:clickable="false"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/vegan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>

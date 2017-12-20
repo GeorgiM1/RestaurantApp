@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.restaurantapp.RestaurntMenuActivity">
+
+
+    <ImageView
+        android:id="@+id/logo_restaurant"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"/>
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:layout_below="@id/logo_restaurant"
+        android:id="@+id/name_restaurant"
+        android:text="name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linear"
+        android:layout_below="@id/name_restaurant"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_margin="20dp"
+        android:id="@+id/rating_restaurant"
+        android:text="rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    android:layout_below="@id/name_restaurant"/>
+    <TextView
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_margin="20dp"
+        android:layout_below="@id/name_restaurant"
+        android:layout_toEndOf="@id/rating_restaurant"
+        android:id="@+id/city_restaurant"
+        android:text="city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+      android:gravity="center"
+        android:layout_weight="1"
+        android:layout_margin="20dp"
+        android:text="likes"
+        android:id="@+id/likes_restuarant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/city_restaurant"
+        android:layout_below="@id/name_restaurant"/>
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/menu_recycler"
+        android:layout_below="@id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+</RelativeLayout>
