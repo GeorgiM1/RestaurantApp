@@ -5,5 +5,7 @@ package com.example.android.restaurantapp.Model;
  */
 
 public interface OnMenuClickListener {
-    public void  onMenuClickListener (Menu menu);
+    public void  onMenuClickListener (Menu menu, int position_);
+
+    public void onLongMenuClickListener (Menu menu, int position);
 }

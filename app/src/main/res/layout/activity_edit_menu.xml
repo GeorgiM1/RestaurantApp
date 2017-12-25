@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.restaurantapp.EditMenuActivity">
+    <ImageView
+        android:id="@+id/IMAGE"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@id/aaa"/>
+    <RelativeLayout
+        android:id="@+id/aaa"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_margin="10dp"
+            android:id="@+id/foodNAME"
+            android:hint="Food name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <EditText
+        android:inputType="number"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/food_price"
+        android:hint="Price"/>
+    <RadioGroup
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/food_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <RadioButton
+        android:id="@+id/veganBtn"
+        android:text="@string/vegan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RadioButton
+        android:id="@+id/notVeganBtn"
+        android:text="@string/not_vegan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </RadioGroup>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/addFood"
+        android:text="add"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/editBtn"
+        android:text="EDIT"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

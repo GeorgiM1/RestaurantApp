@@ -41,7 +41,7 @@ public class Main2Activity extends AppCompatActivity {
       restaurantModel.setName(ime.getText().toString());
       restaurantModel.setCity(grad.getText().toString());
       restaurantModel.setRating(rating.getText().toString());
-      restaurants.getRestaurantModelArrayList().add(restaurantModel);
+        restaurants.getRestaurantModelArrayList().add(restaurantModel);
         Preferences.addRestaurants(restaurants,this);
         setResult(RESULT_OK, new Intent());
         finish();

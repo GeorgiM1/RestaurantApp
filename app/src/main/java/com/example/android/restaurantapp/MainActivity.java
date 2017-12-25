@@ -33,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         adapter = new CustomAdapter(this, new OnRestaurantRowClickListener() {
             @Override
-            public void onRestaurantRowClickListener(RestaurantModel model) {
+            public void onRestaurantRowClickListener(RestaurantModel model, int position) {
                 Intent intent = new Intent(MainActivity.this, RestaurntMenuActivity.class);
                 intent.putExtra("RESTAURANT_EXTRA", model);
-                startActivity(intent);
+                intent.putExtra("POSITION", position);
+                startActivityForResult(intent, 1000);
             }
         });
 
@@ -47,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
+    }
 
-
-    }@OnClick(R.id.btn)
-    public void onBtnClick (View view){
+    @OnClick(R.id.btn)
+    public void onBtnClick(View view) {
         Intent intent = new Intent(this, Main2Activity.class);
         startActivityForResult(intent, 1000);
 
@@ -59,10 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1000 & resultCode==RESULT_OK)
-            adapter.setRestaurantModels(Preferences.getRestaurants(this).getRestaurantModelArrayList());
+
+        adapter.setRestaurantModels(Preferences.getRestaurants(this).getRestaurantModelArrayList());
 
         adapter.notifyDataSetChanged();
-        }
+
     }
+}
 

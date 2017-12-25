@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.android.restaurantapp.Model.Menu;
@@ -23,18 +24,20 @@ import butterknife.ButterKnife;
  * Created by pc on 12/18/2017.
  */
 
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder1>{
+public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder1> {
     ArrayList<Menu> menus = new ArrayList<>();
 
     Context context;
     OnMenuClickListener onMenuClickListener;
+
     public MenuAdapter(Context _context, OnMenuClickListener _onMenuClickListener) {
-        context= _context;
+        context = _context;
         onMenuClickListener = _onMenuClickListener;
 
     }
-    public void setMenus (ArrayList<Menu> menuArrayList){
-        menus=menuArrayList;
+
+    public void setMenus(ArrayList<Menu> menuArrayList) {
+        menus = menuArrayList;
     }
 
 
@@ -45,26 +48,42 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder1>{
         View view = inflater.inflate(R.layout.menu_recycler, parent, false);
         ViewHolder1 viewHolder1 = new ViewHolder1(view);
         return viewHolder1;
+
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder1 holder, int position) {
-final Menu menu = menus.get(position);
-holder.foodName.setText(menu.getFoodname());
-holder.price.setText(menu.getPrice());
+    public void onBindViewHolder(final ViewHolder1 holder, final int position) {
+        final Menu menu = menus.get(position);
+        holder.foodName.setText(menu.getFoodname());
+        holder.price.setText(menu.getPrice());
         Picasso.with(context).load(menu.getLink()).centerCrop().fit().into(holder.img);
-        if (menu.isIsveg()){
+        if (menu.isIsveg()) {
             holder.isVeg.setChecked(true);
-        }else holder.isVeg.setChecked(false);
+        } else holder.isVeg.setChecked(false);
 
+        holder.menu_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onMenuClickListener.onMenuClickListener(menu, position);
+            }
+        });
 
-
+        holder.menu_layout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                onMenuClickListener.onLongMenuClickListener(menu, position);
+                return false;
+            }
+        });
 
 
     }
 
     @Override
     public int getItemCount() {
+        if (menus == null) {
+            return 0;
+        }
         return menus.size();
     }
 
@@ -77,6 +96,9 @@ holder.price.setText(menu.getPrice());
         TextView foodName;
         @BindView(R.id.price)
         TextView price;
+        @BindView(R.id.menu_layout_layout)
+        RelativeLayout menu_layout;
+
         public ViewHolder1(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

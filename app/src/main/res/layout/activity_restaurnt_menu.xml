@@ -12,6 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="20dp"/>
+    <Button
+        android:text="gallery"
+        android:layout_alignTop="@id/logo_restaurant"
+        android:id="@+id/gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="add"
+        android:id="@+id/addBtn"
+        android:layout_alignTop="@id/logo_restaurant"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <TextView
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"

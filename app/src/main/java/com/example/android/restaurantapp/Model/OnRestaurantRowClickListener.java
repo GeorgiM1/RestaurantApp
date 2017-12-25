@@ -5,5 +5,5 @@ package com.example.android.restaurantapp.Model;
  */
 
 public interface OnRestaurantRowClickListener {
-    public void onRestaurantRowClickListener (RestaurantModel model);
+    public void onRestaurantRowClickListener (RestaurantModel model, int position);
 }
